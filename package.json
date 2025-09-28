@@ -1,0 +1,12 @@
+
+{
+  "name": "1clikfix-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "echo 'This project is intended to be deployed on Netlify'"
+  },
+  "dependencies": {
+    "square": "^17.0.0"
+  }
+}
