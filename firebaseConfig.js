@@ -1,2 +1,2 @@
-// Paste your Firebase web config here or set them as environment variables in Netlify
+// Paste your Firebase web config here
 export const firebaseConfig = { apiKey:'', authDomain:'', projectId:'', storageBucket:'', messagingSenderId:'', appId:'' };
