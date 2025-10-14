@@ -1,12 +1,14 @@
-
 [build]
-  command = "npm run build"
-  publish = "dist"
-
-[functions]
-  directory = "netlify/functions"
+  publish = "public"
+  functions = "netlify/functions"
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/public/index.html"
   status = 200
+
+# optional redirect from subdomain to primary domain
+[[redirects]]
+  from = "https://1clikfixx.netlify.app/*"
+  to = "https://www.1clikfix.com/:splat"
+  status = 301
