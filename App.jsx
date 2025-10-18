@@ -1,23 +1,23 @@
-import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import React from 'react'
+import { Outlet, Link } from 'react-router-dom'
+import './styles/main.css'
+
 export default function App(){
   return (
-    <div className="min-h-screen font-sans">
-      <header className="bg-gradient-to-r from-blue-400 to-cyan-400 text-white p-4">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <div className="text-2xl font-bold">1ClikFixx</div>
-          <nav className="space-x-4">
-            <Link to="/" className="underline">Book</Link>
-            <Link to="/subscribe" className="underline">Subscribe</Link>
-            <Link to="/calendar" className="underline">Calendar</Link>
-            <Link to="/login" className="underline">Login</Link>
-          </nav>
-        </div>
+    <div className="app-root">
+      <header className="topbar">
+        <div className="brand">1ClikFixx</div>
+        <nav className="nav">
+          <Link to="/">Home</Link>
+          <Link to="/subscribe">Subscribe</Link>
+          <Link to="/calendar">Calendar</Link>
+          <Link to="/questionnaire">Questionnaire</Link>
+          <Link to="/provider-form">Provider</Link>
+          <Link to="/dashboard">Dashboard</Link>
+        </nav>
       </header>
-      <main className="p-6 max-w-5xl mx-auto">
-        <Outlet />
-      </main>
-      <footer className="bg-red-600 text-white p-4 text-center">© 2025 1ClikFixx</footer>
+      <main className="content"><Outlet/></main>
+      <footer className="footer">© 2025 1ClikFixx — <a href="/legal">Legal</a></footer>
     </div>
   )
 }

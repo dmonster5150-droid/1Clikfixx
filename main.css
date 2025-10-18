@@ -1,0 +1,12 @@
+:root{ --blue:#007bff; --black:#000; --red:#ff1a1a; }
+body{ margin:0; font-family: Inter, system-ui, Arial; background:#f8fafc; color:#0f1720; }
+.topbar{ display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:linear-gradient(90deg,var(--blue),#00c0ff); color:#fff; }
+.brand{ font-weight:700; font-size:20px; }
+.nav a{ margin-left:12px; color:rgba(255,255,255,0.95); text-decoration:none; }
+.content{ padding:20px; max-width:900px; margin:20px auto; }
+.page{ background:#fff; padding:20px; border-radius:8px; box-shadow:0 2px 8px rgba(2,6,23,0.06); }
+.actions{ display:flex; gap:12px; margin-top:12px; }
+.btn{ padding:10px 14px; border-radius:8px; border:1px solid transparent; cursor:pointer; font-weight:600; }
+.btn.primary{ background:var(--blue); color:white; }
+.btn.outline{ background:white; color:var(--blue); border-color:var(--blue); }
+.footer{ text-align:center; padding:14px; background:#111; color:#fff; margin-top:24px; }
