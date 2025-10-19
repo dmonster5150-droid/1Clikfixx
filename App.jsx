@@ -1,23 +1,23 @@
 import React from 'react'
 import { Outlet, Link } from 'react-router-dom'
-import './styles/main.css'
+import { useAuth } from './utils/auth'
 
 export default function App(){
+  const { user, logout } = useAuth()
   return (
-    <div className="app-root">
-      <header className="topbar">
+    <div className="app">
+      <header className="header">
         <div className="brand">1ClikFixx</div>
         <nav className="nav">
-          <Link to="/">Home</Link>
-          <Link to="/subscribe">Subscribe</Link>
-          <Link to="/calendar">Calendar</Link>
-          <Link to="/questionnaire">Questionnaire</Link>
-          <Link to="/provider-form">Provider</Link>
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to='/book'>Book</Link>
+          <Link to='/calendar'>Calendar</Link>
+          <Link to='/profile'>Profile</Link>
+          {!user && <Link to='/login'>Login</Link>}
+          {user && <button className="btn-ghost" onClick={logout}>Logout</button>}
         </nav>
       </header>
-      <main className="content"><Outlet/></main>
-      <footer className="footer">© 2025 1ClikFixx — <a href="/legal">Legal</a></footer>
+      <main className="container"><Outlet/></main>
+      <footer className="footer">© 2025 1ClikFixx</footer>
     </div>
   )
 }

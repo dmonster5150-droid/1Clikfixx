@@ -1,7 +1,14 @@
-1clikfixx_pages - Simple React page shells for 1ClikFixx
+1Clikfixx - Client Booking (Phase A)
+
+This package contains the client-side app for Phase A:
+- Email + Google Auth (Firebase)
+- Protected /book, /calendar, /profile pages
+- Firestore writes for bookings and user profiles
+- jobTypes list for booking dropdown
 
 How to use:
-1. Unzip and push to your GitHub repo, or upload the folder to Netlify.
+1. Rename .env.example to .env (for local) or set environment variables in Netlify.
 2. Run `npm install` then `npm run dev` to preview locally.
-3. Deploy to Netlify (build command: npm run build, publish folder: dist).
-4. After confirming pages work, we'll wire Firebase auth and Square payments.
+3. Deploy to Netlify: build command `npm run build`, publish folder `dist`.
+
+Important: Do NOT commit secret keys for admin service accounts. Client Firebase config is safe to include as env vars.

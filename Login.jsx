@@ -1,36 +1,49 @@
-import React, { useState } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
-import { firebaseConfig } from '../utils/firebaseConfig';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'
+import { initializeApp } from 'firebase/app'
+import { firebaseConfig } from '../utils/firebaseConfig'
+import { useAuth } from '../utils/auth'
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+initializeApp(firebaseConfig)
+const auth = getAuth()
 
 export default function Login(){
-  const [email,setEmail]=useState('demo@1clikfix.com');
-  const [password,setPassword]=useState('Test1234!');
-  const [msg,setMsg]=useState('');
+  const nav = useNavigate()
+  const { loginWithGoogle } = useAuth()
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
+  const [msg,setMsg] = useState('')
 
   async function signup(){
     try{
-      const userCred = await createUserWithEmailAndPassword(auth,email,password);
-      await sendEmailVerification(userCred.user);
-      setMsg('Verification email sent — check your inbox.');
+      const uc = await createUserWithEmailAndPassword(auth,email,password)
+      await sendEmailVerification(uc.user)
+      setMsg('Account created — verification email sent.')
     }catch(e){ setMsg(e.message) }
   }
 
   async function login(){
     try{
-      await signInWithEmailAndPassword(auth,email,password);
-      setMsg('Logged in — if unverified you will be prompted to verify.');
+      await signInWithEmailAndPassword(auth,email,password)
+      nav('/book')
     }catch(e){ setMsg(e.message) }
   }
 
-  return (<div className='max-w-md mx-auto'>
-    <h2 className='text-xl font-semibold mb-3'>Login / Sign up</h2>
-    <input className='border p-2 w-full mb-2' value={email} onChange={e=>setEmail(e.target.value)} />
-    <input type='password' className='border p-2 w-full mb-2' value={password} onChange={e=>setPassword(e.target.value)} />
-    <div className='flex gap-2'><button onClick={login} className='bg-blue-600 text-white px-4 py-2 rounded'>Login</button><button onClick={signup} className='bg-green-600 text-white px-4 py-2 rounded'>Sign up</button></div>
-    <p className='mt-3 text-sm text-gray-700'>{msg}</p>
+  async function google(){
+    try{
+      await loginWithGoogle()
+      nav('/book')
+    }catch(e){ setMsg('Google sign-in failed') }
+  }
+
+  return (<div className="page auth max-w-md">
+    <h2>Login / Sign up</h2>
+    <input placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} />
+    <input type="password" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} />
+    <div className="row"><button className="btn primary" onClick={login}>Login</button><button className="btn outline" onClick={signup}>Sign up</button></div>
+    <hr />
+    <button className="btn google" onClick={google}>Continue with Google</button>
+    <p className="msg">{msg}</p>
   </div>)
 }
