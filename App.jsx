@@ -36,4 +36,12 @@ function App() {
 }
 
 export default App;
-}
+}<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/subscribe" element={<Subscribe />} />
+  <Route path="/calendar" element={<Calendar />} />
+  <Route path="/questionnaire" element={<Questionnaire />} />
+  <Route path="/provider" element={<ProviderForm />} />
+  <Route path="/dashboard" element={<Dashboard />} />
+  <Route path="*" element={<NotFound />} />
+</Routes>
