@@ -26,3 +26,30 @@ service cloud.firestore {
   date: timestamp,
   status: "pending" | "confirmed" | "completed"
 }
+import { db } from "../firebaseConfig";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
+export const saveBooking = async (bookingData) => {
+  try {
+    const docRef = await addDoc(collection(db, "bookings"), {
+      ...bookingData,
+      createdAt: serverTimestamp(),
+    });
+    console.log("Booking saved:", docRef.id);
+  } catch (e) {
+    console.error("Error saving booking:", e);
+  }import { db } from "../firebaseConfig";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
+export const saveBooking = async (bookingData) => {
+  try {
+    const docRef = await addDoc(collection(db, "bookings"), {
+      ...bookingData,
+      createdAt: serverTimestamp(),
+    });
+    console.log("Booking saved:", docRef.id);
+  } catch (e) {
+    console.error("Error saving booking:", e);
+  }
+};
+};
