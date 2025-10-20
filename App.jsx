@@ -20,5 +20,20 @@ export default function App(){
       <main className="container"><Outlet/></main>
       <footer className="footer">© 2025 1ClikFix</footer>
     </div>
-  )
+  )import { Routes, Route } from "react-router-dom";
+import Home from "./Home.jsx";
+import Booking from "./Booking.jsx";
+import Subscribe from "./Subscribe.jsx";
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/book" element={<Booking />} />
+      <Route path="/subscribe" element={<Subscribe />} />
+    </Routes>
+  );
+}
+
+export default App;
 }
