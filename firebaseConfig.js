@@ -447,4 +447,19 @@ B. I paste the remaining Netlify function stubs (getOpenJobs.js, assignJob.js, g
 C. I paste full HTML pages (job-request & subscribe complete) if you want the exact files to copy.
 
 Tell me which of A/B/C you want right now and I’ll do it in the next message. If you want A, say “A — let’s set env vars” and I’ll walk you through each Netlify field to paste.
-
+// public/js/firebaseConfig.js   (client-side)
+export const firebaseConfig = {
+  apiKey: "AIzaSyDjzDowcTVx_1t9MV7yNVY6GSpDDnSiVdu",
+  authDomain: "1clikfixproject.firebaseapp.com",
+  projectId: "1clikfixproject",
+  storageBucket: "1clikfixproject.firebasestorage.app",
+  messagingSenderId: "984485110022",
+  appId: "1:984485110022:web:ddcf6bb54fc9ccf3d3e87"
+};export const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
+};
