@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './App'
 import Book from './pages/Book'
+import Services from './pages/Services'
 import Calendar from './pages/Calendar'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
@@ -16,8 +17,9 @@ createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<App/>}>
-            <Route index element={<Book/>} />
+            <Route index element={<Services/>} />
             <Route path='book' element={<Book/>} />
+            <Route path='services' element={<Services/>} />
             <Route path='calendar' element={<Calendar/>} />
             <Route path='profile' element={<Profile/>} />
             <Route path='login' element={<Login/>} />
