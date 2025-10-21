@@ -1,4 +1,30 @@
-import React from 'react'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Booking from "./pages/Booking";
+import Calendar from "./pages/Calendar";
+import ProviderPortal from "./pages/ProviderPortal";
+import Login from "./pages/Login";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/book" element={<Booking />} />
+        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/provider" element={<ProviderPortal />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
+}
+
+export default App; React from 'react'
 import { Outlet, Link } from 'react-router-dom'
 import { useAuth } from './utils/auth'
 
