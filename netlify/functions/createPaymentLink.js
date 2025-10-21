@@ -1,4 +1,44 @@
-// netlify/functions/createPaymentLink.js
+// import { Client, Environment } from "square";
+export default async function handler(req, res) {
+  const { amount, idempotencyKey } = JSON.parse(req.body);
+
+  const client = new Client({
+    environment: Environment.Sandbox,
+    accessToken: process.env.VITE_SQUARE_ACCESS_TOKEN,
+  });
+
+  try {
+    const result = await client.paymentsApi.createPayment({
+      sourceId: "cnon:card-nonce-ok",
+      idempotencyKey,
+      amountMoney: { amount, currency: "USD" },
+    });
+    return res.status(200).json(result);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: err.message });
+  }
+} { Client, Environment } from "square";
+export default async function handler(req, res) {
+  const { amount, idempotencyKey } = JSON.parse(req.body);
+
+  const client = new Client({
+    environment: Environment.Sandbox,
+    accessToken: process.env.VITE_SQUARE_ACCESS_TOKEN,
+  });
+
+  try {
+    const result = await client.paymentsApi.createPayment({
+      sourceId: "cnon:card-nonce-ok",
+      idempotencyKey,
+      amountMoney: { amount, currency: "USD" },
+    });
+    return res.status(200).json(result);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: err.message });
+  }
+}
 const { Client, Environment } = require("square");
 
 exports.handler = async (event) => {
