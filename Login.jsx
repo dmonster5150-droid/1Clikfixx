@@ -1,4 +1,27 @@
-import React, { useState } from 'react'
+import React from "react";
+import { auth, provider } from "../firebase/config";
+import { signInWithPopup } from "firebase/auth";
+
+const Login = () => {
+  const googleSignIn = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      alert("Signed in successfully!");
+    } catch (err) {
+      console.error(err);
+      alert("Login failed");
+    }
+  };
+
+  return (
+    <div className="center">
+      <h2>Sign in to 1ClikFix</h2>
+      <button onClick={googleSignIn}>Sign in with Google</button>
+    </div>
+  );
+};
+
+export default Login; React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getAuth } from 'firebase/auth'
 import { initializeApp } from 'firebase/app'
