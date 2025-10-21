@@ -1,4 +1,59 @@
-:root{ --primary:#0066ff; --black:#0a0a0a; --bg:#f5f5f5; --red:#d32f2f; --muted:#6b7280; --card:#ffffff; }
+:body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+  color: #333;
+}
+.header, .footer {
+  background: #007bff;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+.page {
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.center {
+  text-align: center;
+}
+.btn {
+  background: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.btn.secondary {
+  background: gray;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form input, .form select, .form textarea {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+.job-list {
+  list-style: none;
+  padding: 0;
+}
+.job-list li {
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 10px;
+}{ --primary:#0066ff; --black:#0a0a0a; --bg:#f5f5f5; --red:#d32f2f; --muted:#6b7280; --card:#ffffff; }
 *{box-sizing:border-box}
 body{ margin:0; font-family:Inter,system-ui,Arial; background:var(--bg); color:var(--black); }
 .topbar{ display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:linear-gradient(90deg,var(--primary),#00a3ff); color:white; }
