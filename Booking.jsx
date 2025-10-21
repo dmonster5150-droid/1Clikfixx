@@ -1,4 +1,92 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
+import { db } from "../firebase/config";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+
+const jobCategories = [
+  "Plumbing",
+  "Electrical",
+  "Painting",
+  "Carpentry",
+  "Appliance Repair",
+  "Yard Work",
+  "Flooring",
+  "Roof Repair",
+  "General Maintenance",
+  "Cleaning",
+];
+
+const Booking = () => {
+  const [job, setJob] = useState("");
+  const [details, setDetails] = useState("");
+  const [date, setDate] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const submitBooking = async (e) => {
+    e.preventDefault();
+    if (!job || !date) return alert("Please select a job type and date.");
+    setLoading(true);
+    try {
+      await addDoc(collection(db, "bookings"), {
+        job,
+        details,
+        date: Timestamp.fromDate(new Date(date)),
+        createdAt: Timestamp.now(),
+      });
+      setSubmitted(true);
+      setJob("");
+      setDetails("");
+      setDate("");
+    } catch (err) {
+      console.error(err);
+      alert("Error submitting booking.");
+    }
+    setLoading(false);
+  };
+
+  if (submitted)
+    return (
+      <div className="center">
+        <h2>Thank you!</h2>
+        <p>Your booking request has been submitted.</p>
+      </div>
+    );
+
+  return (
+    <div className="page">
+      <h2>Book a Service</h2>
+      <form onSubmit={submitBooking} className="form">
+        <label>Job Type</label>
+        <select value={job} onChange={(e) => setJob(e.target.value)}>
+          <option value="">Select...</option>
+          {jobCategories.map((cat) => (
+            <option key={cat}>{cat}</option>
+          ))}
+        </select>
+
+        <label>Preferred Date</label>
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+
+        <label>Details / Notes</label>
+        <textarea
+          value={details}
+          onChange={(e) => setDetails(e.target.value)}
+          placeholder="Describe your project..."
+        ></textarea>
+
+        <button disabled={loading} type="submit">
+          {loading ? "Submitting..." : "Submit Booking"}
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Booking; React, {useState} from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { firebaseConfig } from '../utils/firebaseConfig';
