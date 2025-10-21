@@ -1,4 +1,22 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Home = () => (
+  <div className="page center">
+    <h1>Welcome to 1ClikFix</h1>
+    <p>Your one-stop solution for all home repairs and handyman services.</p>
+    <div className="buttons">
+      <Link to="/book" className="btn">
+        Book a Service
+      </Link>
+      <Link to="/login" className="btn secondary">
+        Provider Login
+      </Link>
+    </div>
+  </div>
+);
+
+export default Home; React from 'react'
 import { useNavigate } from 'react-router-dom'
 export default function Home(){
   const nav = useNavigate()
