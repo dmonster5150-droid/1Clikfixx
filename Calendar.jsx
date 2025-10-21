@@ -1,4 +1,46 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { db } from "../firebase/config";
+import { collection, getDocs } from "firebase/firestore";
+
+const Calendar = () => {
+  const [bookings, setBookings] = useState([]);
+
+  useEffect(() => {
+    const fetchBookings = async () => {
+      const snapshot = await getDocs(collection(db, "bookings"));
+      const items = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setBookings(items);
+    };
+    fetchBookings();
+  }, []);
+
+  return (
+    <div className="page">
+      <h2>Upcoming Jobs</h2>
+      {bookings.length === 0 ? (
+        <p>No jobs scheduled yet.</p>
+      ) : (
+        <ul className="job-list">
+          {bookings.map((job) => (
+            <li key={job.id}>
+              <strong>{job.job}</strong> —{" "}
+              {job.date?.toDate
+                ? job.date.toDate().toLocaleDateString()
+                : "No date"}
+              <br />
+              <small>{job.details}</small>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+export default Calendar; React, { useEffect, useState } from 'react'
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, query, where, orderBy, onSnapshot } from 'firebase/firestore'
 import { firebaseConfig } from '../utils/firebaseConfig'
