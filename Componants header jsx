@@ -1,0 +1,17 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Header = () => (
+  <header className="header">
+    <h2>1ClikFix</h2>
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="/book">Book</Link>
+      <Link to="/calendar">Calendar</Link>
+      <Link to="/provider">Providers</Link>
+      <Link to="/login">Login</Link>
+    </nav>
+  </header>
+);
+
+export default Header;
