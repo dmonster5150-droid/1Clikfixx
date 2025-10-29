@@ -1,0 +1,20 @@
+export const defaultServices = [
+  'Drywall repair / patching',
+  'Interior painting / touch-up',
+  'Exterior painting / siding repair',
+  'Light plumbing (faucet, drain, toilet)',
+  'Light electrical (fixture, switch, outlet)',
+  'Carpentry / trim / molding / cabinetry repair',
+  'Door / window repair or installation',
+  'Tile & grout work',
+  'Floor repairs / refinishing',
+  'Furniture / shelving assembly / installation',
+  'Fence / gate repair or installation',
+  'Deck repair / maintenance',
+  'Gutter cleaning / repair',
+  'Small appliance installation / mounting',
+  'Hanging pictures, mirrors, TV mounts',
+  'Weatherproofing / caulking / sealing',
+  'Window treatments, blinds, shades install',
+  'Patio / outdoor maintenance / pressure washing'
+];

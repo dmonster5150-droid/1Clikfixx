@@ -1,0 +1,20 @@
+:root{ --primary:#0066ff; --black:#0a0a0a; --bg:#f5f5f5; --red:#d32f2f; --muted:#6b7280; --card:#ffffff; }
+*{box-sizing:border-box}
+body{ margin:0; font-family:Inter,system-ui,Arial; background:var(--bg); color:var(--black); }
+.topbar{ display:flex; justify-content:space-between; align-items:center; padding:12px 20px; background:linear-gradient(90deg,var(--primary),#00a3ff); color:white; }
+.brand{ font-weight:800; font-size:20px; }
+.nav a{ margin-left:12px; color:rgba(255,255,255,0.95); text-decoration:none; }
+.container{ padding:24px; max-width:980px; margin:24px auto; }
+.page{ background:var(--card); padding:20px; border-radius:10px; box-shadow:0 6px 18px rgba(2,6,23,0.06); }
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+.card{ background:#fff; padding:12px; border-radius:8px; cursor:pointer; border:1px solid #eef6fb; }
+.card:hover{ box-shadow:0 8px 20px rgba(2,6,23,0.06); transform:translateY(-2px); }
+.max-w-md{ max-width:660px; margin:0 auto; }
+input, textarea, select{ width:100%; padding:10px; margin:8px 0 14px; border:1px solid #e6eef6; border-radius:8px; font-size:14px; }
+textarea{ min-height:110px; resize:vertical; }
+.row{ display:flex; gap:10px; align-items:center; }
+.btn{ padding:10px 14px; border-radius:8px; border:none; cursor:pointer; font-weight:700; }
+.btn.primary{ background:var(--black); color:white; }
+.btn.google{ background:white; color:var(--muted); border:1px solid #e6eef6; display:flex; align-items:center; padding:8px 12px; border-radius:8px; }
+.booking{ padding:10px 12px; border:1px solid #eef6fb; border-radius:8px; margin-bottom:8px; background:#fbfdff; }
+.footer{ text-align:center; padding:14px; color:#94a3b8; margin-top:20px; }
